@@ -73,6 +73,7 @@ int main()
                     free (Ptraux);
                     Ptr=Ptraux->Ptrsig;
                 }
+              Ptr=NULL;
                 printf ("\n Saliendo...");
                 break;
 
