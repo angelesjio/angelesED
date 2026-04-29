@@ -70,8 +70,8 @@ int main()
                 Ptraux=Ptr;
                 while (Ptr!=NULL){
                     Ptraux=Ptr;
-                    free (Ptraux);
                     Ptr=Ptraux->Ptrsig;
+                    free (Ptraux);
                 }
               Ptr=NULL;
                 printf ("\n Saliendo...");
