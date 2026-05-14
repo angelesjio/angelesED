@@ -75,17 +75,15 @@ int main(){
                 }else{
 
                     Ptrult = ptr->ant;
-
                     Ptrnew->sig = ptr;
                     Ptrnew->ant = Ptrult;
-
                     Ptrult->sig = Ptrnew;
                     ptr->ant = Ptrnew;
 
                     ptr = Ptrnew;
                 }
 
-                printf("Dato insertado :D\n");
+                printf("Se creo el dato\n");
             }
 
             break;
@@ -134,7 +132,7 @@ int main(){
 
                 Ptrtem = ptr;
 
-                printf("Nodos\n");
+                printf("\nNodos\n");
 
                 do{
 
@@ -142,6 +140,8 @@ int main(){
                     Ptrtem = Ptrtem->sig;
 
                 }while(Ptrtem != ptr);
+
+                printf ("\n");
             }
 
             break;
