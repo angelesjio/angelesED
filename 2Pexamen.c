@@ -148,7 +148,15 @@ int main(){
         }
 
         case 4:
-            printf("Saliendo del código, espere un momento...\n");
+
+            Ptrtem=ptr;
+            while(Ptrtem != ptr){
+                Ptrtem=ptr;
+                ptr=Ptrtem->sig;
+                free (Ptrtem);
+            }
+            ptr=NULL;
+            printf ("\n Saliendo...");
             break;
 
         default:
