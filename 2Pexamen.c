@@ -149,15 +149,24 @@ int main(){
 
         case 4:
 
-            Ptrtem=ptr;
-            while(Ptrtem != ptr){
-                Ptrtem=ptr;
-                ptr=Ptrtem->sig;
-                free (Ptrtem);
-            }
-            ptr=NULL;
-            printf ("\n Saliendo...");
-            break;
+    if(ptr != NULL){
+
+        Ptrtem = ptr->sig;
+
+        while(Ptrtem != ptr){
+
+            Ptrult = Ptrtem;
+            Ptrtem = Ptrtem->sig;
+            free(Ptrult);
+        }
+
+        free(ptr);
+        ptr = NULL;
+    }
+
+    printf("\nSaliendo :D...");
+    break;
+
 
         default:
             printf("Opcion invalida\n");
