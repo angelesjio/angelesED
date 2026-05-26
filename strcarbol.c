@@ -53,7 +53,7 @@ int main(){
                                             }
 
                                     if (Ptrtemp->dato<Craiz->dato){
-                                            if (Craiz->der==NULL){
+                                            if (Craiz->izq==NULL){
                                                 Craiz->izq=Ptrtemp;
                                                 break;
                                                 }
