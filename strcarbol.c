@@ -9,6 +9,7 @@ struct arbol{
 int Menu(int op);
 struct arbol* crear();
 void inOrden(struct arbol* raiz);
+void Eliminar (struct arbol *raiz);
 
 int main(){
     struct arbol *raiz=NULL;
@@ -26,45 +27,31 @@ int main(){
                     printf ("NO se pudo crear memoria\n");
                 }else if(raiz==NULL){
                     raiz=Ptrtemp;
-                }
-                if (raiz!=NULL){
-                    Craiz=raiz;
-                    if (Ptrtemp->dato<Craiz->dato){
-                        if (Craiz->izq==NULL){
-                            Craiz->izq=Ptrtemp;
-                        }
-                    }else if (Ptrtemp->dato>Craiz->dato){
-                        if (Craiz->der==NULL){
-                            Craiz->der=Ptrtemp;
-                        }
-                    }
-
-                          } else{
-                                
-
+                } else {
+                                Craiz=raiz;
+                                while(1){ 
                                     if (Ptrtemp->dato>Craiz->dato){
                                             if (Craiz->der==NULL){
                                                 Craiz->der=Ptrtemp;
                                                 break;
-                                                }
+                                             }
                                             else{
-                                                Craiz=Craiz->der;
-                                                }
-                                            }
+                                                Craiz=Craiz->der;    
+                                             }
+                                    }
 
                                     if (Ptrtemp->dato<Craiz->dato){
                                             if (Craiz->izq==NULL){
                                                 Craiz->izq=Ptrtemp;
                                                 break;
-                                                }
-                                            else{
-                                                Craiz=Craiz->izq;                                                
-                                                }
                                             }
-
-
-
+                                            else{
+                                                Craiz=Craiz->izq;                                                 
+                                            }
+                                    }
                                 }
+                                    
+                            }
 
             break;
 
@@ -73,6 +60,10 @@ int main(){
             break;
 
             case 3:
+            Eliminar(raiz);
+            break;
+
+            case 4:
             printf ("\n Saliendo \n");
             break;
 
@@ -81,7 +72,7 @@ int main(){
             break;
         }
 
-    }while(op!=3);
+    }while(op!=4);
 
 
 }
@@ -90,7 +81,8 @@ int Menu(int op){
     printf ("\nMenu\n");
     printf ("1 Ingresar\n");
     printf ("2 MOstrar\n");
-    printf ("3 Salir\n");
+    printf ("3 ELiminar\n");
+    printf ("4 Salir\n");
     printf ("Escoja una opcion: ");
     scanf ("%d", &op);
 
@@ -102,14 +94,16 @@ struct arbol* crear(){
 
     if (rama==NULL){
         return 0;
-    }
+    }else{
     printf ("Ingrese su dato: ");
     scanf ("%d", &rama->dato);
 
     rama->izq=NULL;
     rama->der=NULL;
-
     return rama;
+    }
+    
+
 
 }
 /*
@@ -135,5 +129,9 @@ void inOrden(struct arbol* raiz){
     }
 
     printf ("\n");
+
+}
+
+void Eliminar (struct arbol *raiz){
 
 }
