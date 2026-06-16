@@ -1,12 +1,25 @@
 #include <stdlib.h>
+#include <stdio.h>
+#include "futuralibreria.h"
 
-
-struct Persona{
+   struct Persona{
     char *nombre;
     int Edad;
-    struct Persona *Alumno;  
+    char genero; 
+    char Fn[8];
+
+    struct *sig_Alumno;
+    struct *sig_Persona;  
 };
 
+    struct Persona{
+    char matricula[10];
+    char carrera[5];
+    int semestre;
+    char correo[25];
+    float calif[5][5];
+
+};
 
 int main()
 {
@@ -18,7 +31,7 @@ int main()
         
         switch(op){
             case 1:
-            
+            ingresar (People);
             
             break;
             case 2:
