@@ -21,13 +21,14 @@
 
 };
 
+
 int main()
 {
-    struct Persona people;
+    struct Persona *Ptr;
     int op;
     
     do{
-        op=Menu(op);
+        op=menuPrincipal();
         
         switch(op){
             case 1:
