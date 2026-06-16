@@ -9,7 +9,7 @@
     char Fn[8];
 
     struct Alumno *PtrAlu;
-    struct *sig_Persona;  
+    struct Persona *Ptrsig;  
 };
 
     struct Persona{
