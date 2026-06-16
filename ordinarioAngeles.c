@@ -8,7 +8,7 @@
     char genero; 
     char Fn[8];
 
-    struct *sig_Alumno;
+    struct Alumno *PtrAlu;
     struct *sig_Persona;  
 };
 
