@@ -1,7 +1,11 @@
-#ifndef MILIBRERIA_H   // Evita que el archivo se incluya múltiples veces
-#define MILIBRERIA_H
 
-    int Menu(int op)(
+
+#include <stdio.h>
+
+int menuPrincipal(void);
+
+    int menuPrincipal(void){
+        int op; 
         printf ("\n ---MENU--- \n");
         printf ("1 Ingresar persona\n");
         printf ("2 Ingresar Alumno\n");
@@ -11,11 +15,10 @@
         scanf ("%d", &op);
 
         return op; 
-    )
+    }
 
     void ingresar (struct Persona people){
         printf ("INgrese los datos de la persona\n");
         
     }
 
-#endif
