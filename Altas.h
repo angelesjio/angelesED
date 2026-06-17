@@ -2,7 +2,7 @@
 
     struct Persona *Ptr;
 
-    void Altas (struct Persona **Ptr);
+    int Ingresar (struct Persona **Ptr);
 
     int Ingresar (struct Persona **Ptr){
         struct Persona *P=NULL;
@@ -14,12 +14,22 @@
         if (P==NULL){
             printf ("NO se pudo crear persona\n");
             b=0;
-        }else{
+            }else{
             A = nuevoAlumno();
+            if (A==NULL){
+                printf ("No se pudo crear memoria\n");
+                b=0;
+                free(P);
+            }else{
+            P->PtrAlum=A;
+            P->Ptrsig=*Ptr;
+            *Ptr=P;
+            }
         }
         
       return b;
     }
+
 
 /* Ptraux-> nombre= (char*) malloc (sizeof (stilen(nombre)+1)*char);
         printf ("Ingrese el nombre: ");
