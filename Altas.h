@@ -4,11 +4,24 @@
 
     void Altas (struct Persona **Ptr);
 
-    void Ingresar (struct Persona **Ptr){
-        struct Persona *Ptraux;
-        int opcion; 
-        char nombre [ 50 ]; 
-        Ptraux-> nombre= (char*) malloc (sizeof (stilen(nombre)+1)*char);
+    int Ingresar (struct Persona **Ptr){
+        struct Persona *P=NULL;
+        struct Alumno *A=NULL;
+        int b=1;
+        
+        P = nuevaPerson();
+
+        if (P==NULL){
+            printf ("NO se pudo crear persona\n");
+            b=0;
+        }else{
+            A = nuevoAlumno();
+        }
+        
+      return b;
+    }
+
+/* Ptraux-> nombre= (char*) malloc (sizeof (stilen(nombre)+1)*char);
         printf ("Ingrese el nombre: ");
         scanf ("%s", &Ptraux->nombre);
 
@@ -17,5 +30,4 @@
         
 
         printf("~~Ingrese datos~~\n");
-        if ()
-    }
+        if ()*/
