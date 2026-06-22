@@ -52,29 +52,27 @@
 
 
     struct Persona *nuevaPersona(){
-        struct Persona *PtrP=NULL;
-        PtrP->nombre=(int*)malloc(sizeof(int)*5);
+        struct Persona *PtrP;
+        PtrP=(struct Persona*)malloc(sizeof(struct Persona));
 
-        if (PtrP==NULL){
-            printf ("NO se pudo crear memoria; \n");
-
-        }else {
+        if (PtrP!=NULL) {
             printf ("Ingrese el nombre; ");
+            PtrP->nombre = malloc(50*sizeof(char));
             fgets(PtrP->nombre, 50, stdin);
             printf ("INgrese edad; ");
             scanf ("%d", &(PtrP->Edad));
             printf ("INgrese fecha de nacimiento; ");
-            scanf ("%d", &(PtrP->Fn));
+            scanf ("%s", &(PtrP->Fn));
             printf ("INgrese genero; ");
-            scanf ("%s", &(PtrP->genero));
+            scanf ("%c", &(PtrP->genero));
         }
 
-        return PtrP->nombre; 
+        return PtrP; 
 
     }
 
 struct Alumno* nuevoAlumno(void){
-    struct Alumno *PtrA=NULL;
+    struct Alumno *PtrA;
     PtrA=(struct Alumno*)malloc(sizeof(struct Alumno));
     if(PtrA!=NULL){ 
 
@@ -85,7 +83,7 @@ struct Alumno* nuevoAlumno(void){
         printf ("Ingrese semestre; ");
         scanf ("%d", &PtrA->semestre);
         printf ("INgrese correo; ");
-        scanf (fgets (PtrA->correo, 25, stdin));
+        fgets (PtrA->correo, 25, stdin);
         printf ("Ingrese calificación: ");
         for (int i=0; i<5; i++){
             printf ("Calificaciones de %d parcial\n", i);
@@ -103,7 +101,7 @@ struct Alumno* nuevoAlumno(void){
 
 int main()
 {
-    struct Persona *Ptr;
+    struct Persona *Ptr=NULL;
     int op;
     
     do{
