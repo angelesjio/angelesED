@@ -1,5 +1,4 @@
-#ifndef STRUCTS_H
-#define STRUCTS_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,8 +8,6 @@
     struct Persona *nuevaPersona();
     struct Alumno *nuevoAlumno();
     int Ingresar (struct Persona **Ptr);
-
-
 
     struct Persona *nuevaPersona(){
         struct Persona *PtrP=(struct Persona*)malloc(sizeof(struct Persona));
@@ -23,7 +20,7 @@
             printf ("INgrese edad; ");
             scanf ("%d", &(PtrP->Edad));
             printf ("INgrese fecha de nacimiento; ");
-            scanf ("%s", &(PtrP->Fn));
+            fgets(PtrP->Fn, 8, stdin);
             printf ("INgrese genero; ");
             scanf ("%c", &(PtrP->genero));
         }
@@ -32,30 +29,30 @@
 
     }
 
-struct Alumno* nuevoAlumno(void){
-    struct Alumno *PtrA;
-    PtrA=(struct Alumno*)malloc(sizeof(struct Alumno));
+    struct Alumno* nuevoAlumno(void){
+        struct Alumno *PtrA;
+        PtrA=(struct Alumno*)malloc(sizeof(struct Alumno));
 
-    if(PtrA!=NULL){ 
+        if(PtrA!=NULL){ 
 
-        printf ("Ingrese carrera; ");
-        fgets(PtrA->carrera, 5, stdin);
-        printf ("\nINgrese matricula; ");
-        fgets (PtrA->matricula,10,stdin);
-        printf ("Ingrese semestre; ");
-        scanf ("%d", &PtrA->semestre);
-        printf ("INgrese correo; ");
-        fgets (PtrA->correo, 25, stdin);
-        printf ("Ingrese calificación: ");
-        for (int i=0; i<5; i++){
-            printf ("Calificaciones de %d parcial\n", i);
-            for (int j=0; j<5; j++){
-                scanf ("%f", &(PtrA->calif[i][j]));
-               }
+            printf ("Ingrese carrera; ");
+            fgets(PtrA->carrera, 5, stdin);
+            printf ("\nINgrese matricula; ");
+            fgets (PtrA->matricula,10,stdin);
+            printf ("Ingrese semestre; ");
+            scanf ("%d", &PtrA->semestre);
+            printf ("INgrese correo; ");
+            fgets (PtrA->correo, 25, stdin);
+            printf ("Ingrese calificación: ");
+            for (int i=0; i<5; i++){
+                printf ("Calificaciones de %d parcial\n", i);
+                for (int j=0; j<5; j++){
+                    scanf ("%f", &(PtrA->calif[i][j]));
+                }
+                }
             }
-        }
 
-    return PtrA; 
+        return PtrA; 
 
 }
 
@@ -102,4 +99,3 @@ struct Alumno* nuevoAlumno(void){
         printf("~~Ingrese datos~~\n");
         if ()*/
 
-#endif
