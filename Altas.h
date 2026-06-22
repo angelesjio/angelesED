@@ -1,15 +1,65 @@
+#ifndef STRUCTS_H
+#define STRUCTS_H
 #include <stdio.h>
 #include <stdlib.h>
 
     struct Persona *PtrP;
     struct Alumno *PtrA;
 
-    int *nuevaPersona();
-    int *nuevoAlumno();
-
+    struct Persona *nuevaPersona();
+    struct Alumno *nuevoAlumno();
     int Ingresar (struct Persona **Ptr);
 
-    int Ingresar (struct Persona **Ptr){
+
+
+    struct Persona *nuevaPersona(){
+        struct Persona *PtrP=(struct Persona*)malloc(sizeof(struct Persona));
+
+        if (PtrP!=NULL) {
+            printf ("Ingrese el nombre; ");
+            PtrP->nombre = malloc(50*sizeof(char));
+            
+            fgets(PtrP->nombre, 50, stdin);
+            printf ("INgrese edad; ");
+            scanf ("%d", &(PtrP->Edad));
+            printf ("INgrese fecha de nacimiento; ");
+            scanf ("%s", &(PtrP->Fn));
+            printf ("INgrese genero; ");
+            scanf ("%c", &(PtrP->genero));
+        }
+
+        return PtrP; 
+
+    }
+
+struct Alumno* nuevoAlumno(void){
+    struct Alumno *PtrA;
+    PtrA=(struct Alumno*)malloc(sizeof(struct Alumno));
+
+    if(PtrA!=NULL){ 
+
+        printf ("Ingrese carrera; ");
+        fgets(PtrA->carrera, 5, stdin);
+        printf ("\nINgrese matricula; ");
+        fgets (PtrA->matricula,10,stdin);
+        printf ("Ingrese semestre; ");
+        scanf ("%d", &PtrA->semestre);
+        printf ("INgrese correo; ");
+        fgets (PtrA->correo, 25, stdin);
+        printf ("Ingrese calificación: ");
+        for (int i=0; i<5; i++){
+            printf ("Calificaciones de %d parcial\n", i);
+            for (int j=0; j<5; j++){
+                scanf ("%f", &(PtrA->calif[i][j]));
+               }
+            }
+        }
+
+    return PtrA; 
+
+}
+
+  int Ingresar (struct Persona **Ptr){
         struct Persona *P=NULL;
         struct Alumno *A=NULL;
         int b=1;
@@ -22,7 +72,7 @@
             }else{
             A = nuevoAlumno();
             if (A==NULL){
-                printf ("No se pudo crear memoria\n");
+                //printf ("No se pudo crear memoria\n");
                 b=0;
                 free(P);
             }else{
@@ -36,50 +86,6 @@
     }
 
 
-    int *nuevaPersona(){
-        struct Persona *PtrP=NULL;
-        PtrP->nombre=(int*)malloc(sizeof(int)*5);
-
-        if (PtrP==NULL){
-            printf ("NO se pudo crear memoria; \n");
-
-        }else {
-            printf ("Ingrese el nombre; ");
-            fgets(PtrP->nombre, 50, PtrP);
-            printf ("INgrese edad; ");
-            scanf ("%d", &PtrP->Edad);
-            printf ("INgrese fecha de nacimiento; ");
-            scanf ("%d", &PtrP->Fn);
-            printf ("INgrese genero; ");
-            scanf ("%s", &PtrP->genero);
-        }
-
-        return PtrP; 
-
-    }
-
-    int *nuevoAlumno(){
-        struct Alumno *PtrA=NULL;
-
-            printf ("Ingrese carrera; ");
-            fgets(PtrA->carrera, 5, PtrA);
-            printf ("INgrese matricula; ");
-            fgets (PtrA->matricula,10,PtrA);
-            printf ("INgrese semestre; ");
-            scanf ("%d", &PtrA->semestre);
-            printf ("INgrese correo; ");
-            scanf (fgets (PtrA->correo, 25, PtrA));
-            printf ("Ingrese calificación: ");
-            for (int i=0; i<5; i++){
-                for (int j=0; j<5; j++){
-
-
-                }
-            }
-
-        return PtrP; 
-
-    }
 
     //Cosas que si se tiene tiempo se haga :0
 //En edad no debe de aceptar letras
@@ -95,3 +101,5 @@
 
         printf("~~Ingrese datos~~\n");
         if ()*/
+
+#endif
