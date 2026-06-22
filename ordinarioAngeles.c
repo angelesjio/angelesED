@@ -1,9 +1,6 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include "futuralibreria.h"
-#include "Altas.h"
-
-   struct Persona{
+#ifndef STRUCTS_H
+#define STRUCTS_H
+    struct Persona{
     char *nombre;
     int Edad;
     char genero; 
@@ -22,8 +19,13 @@
 
     };
 
+#endif
 
-
+#include <stdlib.h>
+#include <stdio.h>
+#include "futuralibreria.h"
+#include "prototipos.h"
+#include "Altas.h"
 
 int main()
 {
