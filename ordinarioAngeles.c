@@ -1,60 +1,46 @@
-#ifndef STRUCTS_H
-#define STRUCTS_H
-    struct Persona{
-    char *nombre;
-    int Edad;
-    char genero; 
-    char Fn[8];
-
-    struct Alumno *PtrAlum;
-    struct Persona *Ptrsig;  
-    };
-
-    struct Alumno{
-    char matricula[10];
-    char carrera[5];
-    int semestre;
-    char correo[25];
-    float calif[5][5];
-
-    };
-
-#endif
-
 #include <stdlib.h>
 #include <stdio.h>
-#include "futuralibreria.h"
-#include "prototipos.h"
+#include "Menus.h"
 #include "Altas.h"
+#include "Bajas.h"
+#include "estructuras.h"
 
 int main()
 {
     struct Persona *Ptr=NULL;
     int op;
+    int opA;
+    int opB;
+    int opM;
     
     do{
         op=menuPrincipal();
         
         switch(op){
             case 1:
-                if(Ingresar (&Ptr)){
-                    printf("Persona creada correctamente");
-                }else{
-                    printf("No se pudo crear la persona");
-                }    
+                opA=MenuAltas();
+                CasosAltas(opA, &Ptr);
+                   
                 break;
+
             case 2:
+                opB= MenuBajas();
+                Casosbajas(opB, &Ptr);
             
-            break;
+                break;
+
             case 3:
-            
+                opM= MenuMostrar();
+                CasosMostrar(opM, &Ptr);
             break;
+
             case 4:
-            printf ("\n Saliendo...");
+                printf ("\n Saliendo...");
             break;
             
             default:
-            printf ("\nOpcion no encontrada, intente de nuevo....\n");
+                printf ("\nOpcion no encontrada, intente de nuevo....\n");
+            break; 
             
             
         }
