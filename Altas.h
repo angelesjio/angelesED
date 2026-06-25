@@ -20,7 +20,7 @@
             printf ("INgrese edad; ");
             scanf ("%d", &(PtrP->Edad));
             printf ("INgrese fecha de nacimiento; ");
-            fgets(PtrP->Fn, 8, stdin);
+            fgets(PtrP->Fn, 9, stdin);
             printf ("INgrese genero; ");
             scanf ("%c", &(PtrP->genero));
         }
@@ -47,7 +47,7 @@
             for (int i=0; i<5; i++){
                 printf ("Calificaciones de %d parcial\n", i);
                 for (int j=0; j<5; j++){
-                    scanf ("%f", &(PtrA->calif[i][j]));
+                    sca
                 }
                 }
             }
