@@ -38,7 +38,7 @@
             printf ("Ingrese carrera; ");
             fgets(PtrA->carrera, 5, stdin);
             printf ("\nINgrese matricula; ");
-            fgets (PtrA->matricula,10,stdin);
+            fgets (PtrA->matricula, 10, stdin);
             printf ("Ingrese semestre; ");
             scanf ("%d", &PtrA->semestre);
             printf ("INgrese correo; ");
@@ -47,9 +47,10 @@
             for (int i=0; i<5; i++){
                 printf ("Calificaciones de %d parcial\n", i);
                 for (int j=0; j<5; j++){
-                    sca
+                    PtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
                 }
                 }
+            printf ("\n se asignaron las calificaciones correctamente *u*/ \n");
             }
 
         return PtrA; 
