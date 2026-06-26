@@ -8,8 +8,9 @@ int MenuBajas();
 void Casosbajas(int opB, struct Persona **Ptr);
 void CasosAltas(int opA, struct Persona **Ptr);
 void CasosMostrar(int opM, struct Persona **Ptr);
+int Carrera(void);
 
-    int MenuMostrar();
+int MenuMostrar();
 
     int menuPrincipal(void){
         int op; 
@@ -28,28 +29,29 @@ void CasosMostrar(int opM, struct Persona **Ptr);
     int MenuAltas(){
         int opA;
 
-        printf ("Menú altas\n");
-        printf ("1) Ingresar una persona\n");
-        printf ("2) Ingresar varias personas\n ");
-        printf ("Escoja una opción: ");
+        printf ("\nMenú altas\n");
+        printf ("\n1) Ingresar una persona");
+        printf ("\n2) Ingresar varias personas");
+        printf ("\nEscoja una opción: ");
         scanf ("%d", &opA);
 
+        printf ("\n");
         return opA;
     }
 
-    int Carrera(struct Alumno *PtrA){
-        int carrera=0; 
+    int Carrera(void){
+        int c=0; 
 
-        printf ("\n Escoja la carrera\n ");
-        printf ("1) Ing. DSSI\n ");
-        printf ("2) Ing. Forestal\n");
-        printf ("3) Lic. Administración Turística");
-        printf ("4) Lic. Biología \n ");
-        printf ("5) Lic CN Ambientales\n ");
-        printf ("\nSeleccione el numero al que corresponda su carrera\n");
-        scanf ("%d ", &carrera);
-
-        return carrera; 
+        printf ("\n \nEscoja la carrera ");
+        printf ("\n1) Ing. DSSI ");
+        printf ("\n2) Ing. Forestal");
+        printf ("\n3) Lic. Administración Turística");
+        printf ("\n4) Lic. Biología");
+        printf ("\n5) Lic CN Ambientales");
+        printf ("\nSeleccione el numero al que corresponda su carrera:\n");
+        fflush(stdin);
+        scanf ("%d", &c);
+        return c; 
 
     }
 
@@ -67,62 +69,56 @@ void CasosMostrar(int opM, struct Persona **Ptr);
     }
 
 
-    void CasosAltas(int opA, struct Persona **Ptr){
-        switch (opA){
-                case 1:
-                    break;
-                        if(Ingresar (&Ptr)){
-                            printf("Persona creada correctamente\n");
-                        }else{
-                            printf("No se pudo crear la persona\n");
-                        }
-
-                    case 2:
-                        if(IngresoVarios(&Ptr)){
-                            printf("Personas creadas correctamente\n");
-                        }else{
-                            printf("No se pudo crear las personas\n");
-                        } 
-                    break; 
-
-                    default:
-                        printf ("Opcion no encontrada, intente de nuevo\n");
-                    break;
+void CasosAltas(int opA, struct Persona **Ptr){
+    switch (opA){
+        case 1:
+                if(Ingresar (Ptr)){
+                    printf("Se ingreso correctamente\n");
+                }else{
+                    printf("No se pudo crear la persona\n");
                 }
-    }
+                break;
 
-    void Casosbajas(int opB, struct Persona **Ptr){
-        switch (opB){
-                case 1:
-                    break;
-                        if(Baja (&Ptr)){
-                            printf("Persona creada correctamente\n");
-                        }else{
-                            printf("No se pudo crear la persona\n");
-                        }
+            case 2:
+                if(IngresoVarios(Ptr)){
+                    printf("Personas creadas correctamente\n");
+                }else{
+                    printf("No se pudo crear las personas\n");
+                } 
+            break; 
 
-                case 2:
-                        if(VariasBajas(&Ptr)){
-                            printf("Personas creadas correctamente\n");
-                        }else{
-                            printf("No se pudo crear las personas\n");
-                        } 
-                    break; 
+            default:
+                printf ("Opcion no encontrada, intente de nuevo\n");
+            break;
+        }
+}
 
-                case 3:
-                     if(Eliminartodo (&Ptr)){
-                        printf("Personas creadas correctamente\n");
-                    }else{
-                        printf("No se pudo crear las personas\n");
-                    }    
-                break; 
+void Casosbajas(int opB, struct Persona **Ptr){
+    switch (opB){
+        case 1:
+            if(Baja (Ptr)){
+                printf("Se ha eliminado una persona\n");
+            }
+            break;
 
-                default:
-                    printf ("Opcion no encontrada, intente de nuevo\n");
-                break; 
+        case 2:
+            if(VariasBajas(Ptr)){
+                printf("Personas eliminadas correctamente\n");
+            }
+            break; 
 
-                }
-    }
+        case 3:
+                if(Eliminartodo (Ptr)){
+                printf("Personas eliminadas correctamente\n");
+            }   
+        break; 
+
+        default:
+            printf ("Opcion no encontrada, intente de nuevo\n");
+        break; 
+
+        }
+}
 
     int MenuMostrar(){
         int opMos; 
