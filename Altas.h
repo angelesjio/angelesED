@@ -66,15 +66,13 @@
                         if (Ptr==NULL){
                             *Ptr=P;
                         }else{
-                            //no se por que de nuevo da advertencias 
-                            Ptrauxiliar=*Ptr;
+                           /*Ptrauxiliar=*Ptr;
                         while(Ptrauxiliar->Ptrsig!= NULL){
                             Ptrauxiliar=Ptrauxiliar->Ptrsig;
-                        }
-                            P=Ptrauxiliar;
+                        }*/
                             P->PtrAlum=A;
                             P->Ptrsig=*Ptr;
-                            *Ptr=P;
+                            *Ptr=P; 
                         
                         }
                     }
@@ -90,18 +88,21 @@
 
     struct Persona *nuevaPersona(){
         struct Persona *PtrP=(struct Persona*)malloc(sizeof(struct Persona));
+        PtrP->nombre =(char*) malloc(50*sizeof(char));
 
         if (PtrP!=NULL) {
             printf ("Ingrese el nombre; ");
-            PtrP->nombre =(char*) malloc(50*sizeof(char));
-            
+            scanf (" ");
             fgets(PtrP->nombre, 50, stdin);
+            printf ("INgrese genero; ");
+            scanf (" ");
+            scanf ("%c", &(PtrP->genero));
             printf ("INgrese edad; ");
             scanf ("%d", &(PtrP->Edad));
             printf ("INgrese fecha de nacimiento; ");
+            scanf (" ");
             fgets(PtrP->Fn, 9, stdin);
-            printf ("INgrese genero; ");
-            scanf ("%c", &(PtrP->genero));
+            
         }
 
         return PtrP; 
@@ -115,12 +116,16 @@
         if(PtrA!=NULL){ 
 
             printf ("Ingrese carrera; ");
-            PtrA->carrera= Carrera(&PtrA);
+            PtrA->carrera= Carrera( );
             printf ("\nINgrese matricula; ");
+            scanf (" ");
+            fflush(stdin);
             fgets (PtrA->matricula, 10, stdin);
             printf ("Ingrese semestre; ");
+            //fflush(stdin);//ahora aqui ajajsjajsa
             scanf ("%d", &PtrA->semestre);
             printf ("INgrese correo; ");
+            scanf (" ");
             //corregir correo electrónico 
             fgets (PtrA->correo, 25, stdin);
             printf ("Ingrese calificación: ");
@@ -130,7 +135,7 @@
                     PtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
                 }
                 }
-            printf ("\n se asignaron las calificaciones correctamente *u*/ \n");
+            printf ("\nSe asignaron las calificaciones correctamente *u*/ \n");
             }
 
         return PtrA; 
