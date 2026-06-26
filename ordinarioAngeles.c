@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "Menus.h"
 #include "Altas.h"
 #include "Bajas.h"
 #include "estructuras.h"
 
-int main()
-{
+int main(){
     struct Persona *Ptr=NULL;
     int op;
     int opA;
@@ -24,14 +24,19 @@ int main()
                 break;
 
             case 2:
+            
                 opB= MenuBajas();
                 Casosbajas(opB, &Ptr);
             
                 break;
 
             case 3:
+            if (Ptr!=NULL){
                 opM= MenuMostrar();
                 CasosMostrar(opM, &Ptr);
+            }else{
+                printf ("\n No se ha reservado memoria\n ");
+            }
             break;
 
             case 4:
