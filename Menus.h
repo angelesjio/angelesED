@@ -3,12 +3,16 @@
 
 
 int menuPrincipal(void);
-int MenuAltas();
-int MenuBajas();
+int MenuAltas(void);
+int MenuBajas(void);
 void Casosbajas(int opB, struct Persona **Ptr);
 void CasosAltas(int opA, struct Persona **Ptr);
 void CasosMostrar(int opM, struct Persona **Ptr);
 int Carrera(void);
+void Mostrartodo(struct Persona **Ptr);
+void Mostrarporcarrera(struct Persona **Ptr);
+void Mostrarporsemestre (struct Persona **Ptr);
+void Mcarreraysemestre (struct Persona **Ptr);
 
 int MenuMostrar();
 
@@ -18,7 +22,8 @@ int MenuMostrar();
         printf ("1 Ingresar persona\n");
         printf ("2 Eliminar\n");
         printf ("3 Mostrar\n");
-        printf ("4 Salir\n");
+        printf ("4 Funciones especiales\n");
+        printf ("5 Salir\n");
         printf ("INgrese su elección: ");
         scanf ("%d", &op);
 
@@ -26,7 +31,7 @@ int MenuMostrar();
     }
 
 
-    int MenuAltas(){
+    int MenuAltas(void){
         int opA;
 
         printf ("\nMenú altas\n");
@@ -55,7 +60,7 @@ int MenuMostrar();
 
     }
 
-    int MenuBajas(){
+    int MenuBajas(void){
         int opBA;
 
         printf ("Manú bajas\n");
@@ -109,7 +114,7 @@ void Casosbajas(int opB, struct Persona **Ptr){
 
         case 3:
                 if(Eliminartodo (Ptr)){
-                printf("Personas eliminadas correctamente\n");
+                printf("Toda la base de datos ha sido eliminada\n");
             }   
         break; 
 
@@ -120,7 +125,7 @@ void Casosbajas(int opB, struct Persona **Ptr){
         }
 }
 
-    int MenuMostrar(){
+    int MenuMostrar(void){
         int opMos; 
 
         printf ("\n Menu para mostrar\n ");
@@ -138,7 +143,50 @@ void Casosbajas(int opB, struct Persona **Ptr){
     }
 
     void CasosMostrar(int opM, struct Persona **Ptr){
+        if(Ptr!=NULL){
+            
+        switch(opM){
+                case 1:
+                    Mostrartodo(Ptr);
+                break;
 
-            printf ("En construcción\n");
+                case 2:
+                    Mostrarporcarrera(Ptr);
+                break;
+
+                case 3:
+                    Mostrarporsemestre (Ptr)
+                break;
+
+                case 4:
+                    Mcarreraysemestre (Ptr)
+                break;
+
+                case 5:
+                    Mospornombre (Ptr)
+                break;
+
+                case 6:
+                    Mosmatricula (Ptr)
+                break;
+
+                default:
+                printf ("\n Eleccion no valida, intente de nuevo\n");
+                break; 
+                }
+            }else{
+                printf ("\nNo existe nada que imprimir\n");
+            }
 
     }
+
+int Funcionesespeciales (void){
+    int funcion;
+    printf ("\n Funciones especiales :)");
+    printf ("\n1) Modificar");
+    printf ("\n2) Calificaciones");
+    printf ("\nEscoja una opción: ");
+    scanf ("%d", &funcion);
+
+    return funcion;
+}
