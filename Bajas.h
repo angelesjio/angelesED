@@ -5,6 +5,7 @@
 int Baja (struct Persona **Ptr);
 int VariasBajas (struct Persona **Ptr);
 int Eliminartodo (struct Persona **Ptr);
+void Salir (struct Persona **Ptr);
 
 int Baja (struct Persona **Ptr){
 
@@ -37,7 +38,6 @@ int Baja (struct Persona **Ptr){
 int VariasBajas (struct Persona **Ptr){
 
     struct Persona *Ptrauxiliar=*Ptr;
-    struct Persona *Antes=NULL;
     int b=1;
     int opB;
 
@@ -46,17 +46,10 @@ int VariasBajas (struct Persona **Ptr){
         printf ("No se ha reservado memoria\n");
         b=0; 
     }else{
-        Ptrauxiliar=*Ptr;
-        while(Ptrauxiliar->Ptrsig!= NULL){
-            Ptrauxiliar=Ptrauxiliar->Ptrsig;
-
-            if ((Ptrauxiliar->Ptrsig)->Ptrsig==NULL){
-                Antes=(Ptrauxiliar->Ptrsig)->Ptrsig;
-            }
-        }
         
-        Antes->Ptrsig=NULL;
-        free(Ptrauxiliar->nombre);
+        *Ptr=(*Ptr)->Ptrsig;
+        
+        free(Ptrauxiliar->nombre);//NO SE
         free (Ptrauxiliar->PtrAlum);
         free (Ptrauxiliar->Ptrsig);
         free(Ptrauxiliar);
@@ -75,9 +68,7 @@ int VariasBajas (struct Persona **Ptr){
 
 int Eliminartodo (struct Persona **Ptr){
     struct Persona *Ptrauxiliar=*Ptr;
-    struct Persona *Antes=NULL;
     int b=1;
-    int opB;
 
     
     if (Ptr==NULL){
@@ -87,17 +78,10 @@ int Eliminartodo (struct Persona **Ptr){
     }else{
 
         do{
-            Ptrauxiliar=*Ptr;
-        while(Ptrauxiliar->Ptrsig!= NULL){
-            Ptrauxiliar=Ptrauxiliar->Ptrsig;
-
-            if ((Ptrauxiliar->Ptrsig)->Ptrsig==NULL){
-                Antes=(Ptrauxiliar->Ptrsig)->Ptrsig;
-            }
-        }
         
-        Antes->Ptrsig=NULL;
-        free(Ptrauxiliar->nombre);
+        *Ptr=(*Ptr)->Ptrsig;
+        
+        free(Ptrauxiliar->nombre);//NO SE
         free (Ptrauxiliar->PtrAlum);
         free (Ptrauxiliar->Ptrsig);
         free(Ptrauxiliar);
@@ -109,5 +93,30 @@ int Eliminartodo (struct Persona **Ptr){
     }
 
     return b;
+
+}
+
+void Salir (struct Persona **Ptr){
+    struct Persona *Ptrauxiliar=*Ptr;
+
+    
+    if (Ptr==NULL){
+        printf ("No hay nada que aliminar\n");
+        b=0; 
+
+    }else{
+
+        do{
+        
+        *Ptr=(*Ptr)->Ptrsig;
+        
+        free(Ptrauxiliar->nombre);//NO SE
+        free (Ptrauxiliar->PtrAlum);
+        free (Ptrauxiliar->Ptrsig);
+        free(Ptrauxiliar);
+
+        }while(Ptr!=NULL);
+        
+    }
 
 }
