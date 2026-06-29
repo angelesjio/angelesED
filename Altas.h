@@ -121,20 +121,13 @@
             scanf (" ");
             fflush(stdin);
             fgets (PtrA->matricula, 10, stdin);
-            printf ("Ingrese semestre; ");
+            printf ("Ingrese semestre (ejemplo. 1,2,3...); ");
             //fflush(stdin);//ahora aqui ajajsjajsa
             scanf ("%d", &PtrA->semestre);
             printf ("INgrese correo; ");
             scanf (" ");
             //corregir correo electrónico 
             fgets (PtrA->correo, 25, stdin);
-            printf ("Ingrese calificación: ");
-            for (int i=0; i<5; i++){
-                printf ("Calificaciones de %d parcial\n", i);
-                for (int j=0; j<5; j++){
-                    PtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
-                }
-                }
             printf ("\nSe asignaron las calificaciones correctamente *u*/ \n");
             }
 
