@@ -20,14 +20,11 @@ int main(){
             case 1:
                 opA=MenuAltas();
                 CasosAltas(opA, &Ptr);
-                   
                 break;
 
             case 2:
-            
                 opB= MenuBajas();
                 Casosbajas(opB, &Ptr);
-            
                 break;
 
             case 3:
@@ -39,9 +36,13 @@ int main(){
             }
             break;
 
-            case 4:
+            case 4://FUNCIONES ESPECIALES
                 printf ("\n Saliendo...");
             break;
+
+            case 5:
+                Salir(Ptr);
+            break; 
             
             default:
                 printf ("\nOpcion no encontrada, intente de nuevo....\n");
@@ -51,7 +52,7 @@ int main(){
         }
         
         
-    }while (op!=4);
+    }while (op!=5);
 
     return 0;
 }
