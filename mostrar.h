@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "estructuras.h"
+#include <string.h>
 
 void Mostrartodo(struct Persona **Ptr);
 void Mostrarporcarrera(struct Persona **Ptr);
@@ -9,42 +10,48 @@ void Mcarreraysemestre (struct Persona **Ptr);
 void Mospornombre (struct Persona **Ptr);
 void Mosmatricula (struct Persona **Ptr);
 
+void CasosMostrar(int opM, struct Persona **Ptr);
+
 
 void Mostrartodo(struct Persona **Ptr){
     int h=0;
     struct Persona *otroPtr=*Ptr;
-    struct Alumno *otroPtrA;
+    struct Alumno *otroPtrA = otroPtr->PtrAlum;
     
-        while(otroPtr!=NULL);{
-            printf ("\nPersona %d\n", h);
+        while(otroPtr!=NULL){
+            printf ("\nPersona %d\n", h+1);
             printf ("\nNombre: %s", otroPtr->nombre);
             printf ("\nEdad: %d", otroPtr->Edad);
-            printf ("\nGenero: %s", otroPtr->genero);
-            printf ("\nFecha de nacimiento: %d", otroPtr->Fn);
-            printf ("\nMatricula: %d", otroPtrA->matricula);
+            printf ("\nGenero: %c", otroPtr->genero);
+            printf ("\nFecha de nacimiento: %s", otroPtr->Fn);
+            printf ("\nMatricula: %s", otroPtrA->matricula);
             printf ("\nCarrera: ");
             if (otroPtrA->carrera==1){
-                printf ("Ing. DSSI ");
+                printf ("\nIng. DSSI ");
             }if(otroPtrA->carrera==2){
                 printf ("\nIng. Forestal");
             }if (otroPtrA->carrera==3){
-                printf ("\nIng. Forestal");
+                printf ("\nLic. administracion turistica");
             }if(otroPtrA->carrera==4){
                 printf ("\nLic. Biología");
             }if(otroPtrA->carrera==5){
                 printf ("\nLic CN Ambientales");
             }
             printf ("\nSemestre: %d", otroPtrA->semestre);
-            printf ("\nCorreo: %d@unsij.edu.mx", otroPtrA->correo);
+            printf ("\nCorreo: %s@unsij.edu.mx", otroPtrA->correo);
             printf ("\nCalificaciones: ");
-            for (int i=1; i<6; i++){
-                printf ("Calificaciones de %d parcial\n", i);
-                for (int j=0; j<6; j++){
-                    otroPtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
+            for(int i = 0; i < 5; i++){
+                printf("Calificaciones de Parcial %d\n", i + 1);
+                for(int j = 0; j < 5; j++){
+                    printf("%.2f ", otroPtrA->calif[i][j]);
                 }
-                }
+                printf("\n");
+            }
             
-            otroPtr= otroPtr->Ptrsig;
+            otroPtr = otroPtr->Ptrsig;
+            if (otroPtr != NULL){
+                otroPtrA = otroPtr->PtrAlum;
+            }
             h++;
         }
     
@@ -53,7 +60,7 @@ void Mostrartodo(struct Persona **Ptr){
 void Mostrarporcarrera(struct Persona **Ptr){
     int h=0;
     struct Persona *otroPtr=*Ptr;
-    struct Alumno *otroPtrA;
+    struct Alumno *otroPtrA = otroPtr->PtrAlum;
     int impcarr;
 
     printf ("\nCARRERAS ");
@@ -63,92 +70,106 @@ void Mostrarporcarrera(struct Persona **Ptr){
         printf ("\n4) Lic. Biología");
         printf ("\n5) Lic CN Ambientales");
     printf ("\n De que carrera desea imprimir?, seleccione el número de la opción: ");
-    scanf ("%d", impcarr);
+    scanf ("%d", &impcarr);
 
-        while(otroPtrA->carrera==impcarr){
-            printf ("\nPersona %d\n", h);
+        while (otroPtr!=NULL){
+            if(otroPtrA->carrera==impcarr){
+            printf ("\nPersona %d\n", h+1);
             printf ("\nNombre: %s", otroPtr->nombre);
             printf ("\nEdad: %d", otroPtr->Edad);
-            printf ("\nGenero: %s", otroPtr->genero);
-            printf ("\nFecha de nacimiento: %d", otroPtr->Fn);
-            printf ("\nMatricula: %d", otroPtrA->matricula);
+            printf ("\nGenero: %c", otroPtr->genero);
+            printf ("\nFecha de nacimiento: %s", otroPtr->Fn);
+            printf ("\nMatricula: %s", otroPtrA->matricula);
             printf ("\nCarrera: ");
                 if (otroPtrA->carrera==1){
-                    printf ("Ing. DSSI ");
+                    printf ("\nIng. DSSI ");
                 }if(otroPtrA->carrera==2){
                     printf ("\nIng. Forestal");
                 }if (otroPtrA->carrera==3){
-                    printf ("\nIng. Forestal");
+                    printf ("\nLic. Administracion turistica");
                 }if(otroPtrA->carrera==4){
                     printf ("\nLic. Biología");
                 }if(otroPtrA->carrera==5){
                     printf ("\nLic CN Ambientales");
                 }
                 printf ("\nSemestre: %d", otroPtrA->semestre);
-                printf ("\nCorreo: %d@unsij.edu.mx", otroPtrA->correo);
+                printf ("\nCorreo: %s@unsij.edu.mx", otroPtrA->correo);
                 printf ("\nCalificaciones: ");
-                for (int i=1; i<6; i++){
-                    printf ("Calificaciones de %d parcial\n", i);
-                    for (int j=0; j<6; j++){
-                        otroPtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
-                    }
+                for(int i = 0; i < 5; i++){
+                    printf("Calificaciones de Parcial %d\n", i + 1);
+                    for(int j = 0; j < 5; j++){
+                        printf("%.2f ", otroPtrA->calif[i][j]);
                 }
+                printf("\n");
+            }
             
-            otroPtr= otroPtr->Ptrsig;
             h++;
-                }
+            }
+            otroPtr = otroPtr->Ptrsig;
+            if (otroPtr != NULL){
+                otroPtrA = otroPtr->PtrAlum;
+            }
+        }
+        
             
-            otroPtr= otroPtr->Ptrsig;
-            h++;
 }
     
 
 
 void Mostrarporsemestre (struct Persona **Ptr){
     int h=0;
-    struct Persona *otroPtr=Ptr;
+    struct Persona *otroPtr=*Ptr;
+    struct Alumno *otroPtrA = otroPtr->PtrAlum;
     int opse;
 
     printf ("\n Ingrese el semestre (Ejemplo. 1,2,3...)");
-    scanf ("%d", opse);
-
-        while(otroPtr->semestre==opse);{
-            printf ("\nPersona %d\n", h);
-            printf ("\nNombre: %s", Ptr->nombre);
-            printf ("\nEdad: %d", Ptr->edad);
-            printf ("\nGenero: %s", Ptr->genero);
-            printf ("\nFecha de nacimiento: %d", Ptr->Fn);
-            printf ("\nMatricula: %d", Ptr->matricula);
+    scanf ("%d", &opse);
+    
+    while (otroPtr!=NULL){
+        if(otroPtrA->semestre==opse){
+            printf ("\nPersona %d\n", h+1);
+            printf ("\nNombre: %s", otroPtr->nombre);
+            printf ("\nEdad: %d", otroPtr->Edad);
+            printf ("\nGenero: %c", otroPtr->genero);
+            printf ("\nFecha de nacimiento: %s", otroPtr->Fn);
+            printf ("\nMatricula: %s", otroPtrA->matricula);
             printf ("\nCarrera: ");
-            if (Ptr->carrera==1){
-                printf ("Ing. DSSI ");
-            }if(Ptr->carrera==2){
-                printf ("\nIng. Forestal");
-            }if (Ptr->carrera==3){
-                printf ("\nIng. Forestal");
-            }if(Ptr->carrera==4){
-                printf ("\nLic. Biología");
-            }if(Ptr->carrera==5){
-                printf ("\nLic CN Ambientales");
+                if (otroPtrA->carrera==1){
+                    printf ("\nIng. DSSI ");
+                }if(otroPtrA->carrera==2){
+                    printf ("\nIng. Forestal");
+                }if (otroPtrA->carrera==3){
+                    printf ("\nLic. Administracion turistica");
+                }if(otroPtrA->carrera==4){
+                    printf ("\nLic. Biología");
+                }if(otroPtrA->carrera==5){
+                    printf ("\nLic CN Ambientales");
+                }
+                printf ("\nSemestre: %d", otroPtrA->semestre);
+                printf ("\nCorreo: %s@unsij.edu.mx", otroPtrA->correo);
+                printf ("\nCalificaciones: ");
+                for(int i = 0; i < 5; i++){
+                    printf("Calificaciones de Parcial %d\n", i + 1);
+                    for(int j = 0; j < 5; j++){
+                        printf("%.2f ", otroPtrA->calif[i][j]);
+                }
+                printf("\n");
             }
-            printf ("\nSemestre: %d", Ptr->semestre);
-            printf ("\nCorreo: %d@unsij.edu.mx", Ptr->correo);
-            printf ("\nCalificaciones: ");
-            for (int i=1; i<6; i++){
-                printf ("Calificaciones de %d parcial\n", i);
-                for (int j=0; j<6; j++){
-                    PtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
-                }
-                }
             
-            otroPtr= otroPtr->Ptrsig;
             h++;
+            }
+            otroPtr = otroPtr->Ptrsig;
+            if (otroPtr != NULL){
+                otroPtrA = otroPtr->PtrAlum;
+            }
         }
+        
 }
 
 void Mcarreraysemestre (struct Persona **Ptr){
     int h=0;
-    struct Persona *otroPtr=Ptr;
+    struct Persona *otroPtr=*Ptr;
+    struct Alumno *otroPtrA = otroPtr->PtrAlum;
     int opse;
     int opcarr;
 
@@ -159,124 +180,186 @@ void Mcarreraysemestre (struct Persona **Ptr){
         printf ("\n4) Lic. Biología");
         printf ("\n5) Lic CN Ambientales");
     printf ("\n De que carrera desea imprimir?, seleccione el número de la opción: ");
-    scanf ("%d", opcarr);
+    scanf ("%d", &opcarr);
     printf ("\n Ingrese el semestre (Ejemplo. 1,2,3...)");
-    scanf ("%d", opse);
+    scanf ("%d", &opse);
 
-        while(otroPtr->semestre==opse && otroPtr->carrera==opcarr){
-            printf ("\nPersona %d\n", h);
-            printf ("\nNombre: %s", Ptr->nombre);
-            printf ("\nEdad: %d", Ptr->edad);
-            printf ("\nGenero: %s", Ptr->genero);
-            printf ("\nFecha de nacimiento: %d", Ptr->Fn);
-            printf ("\nMatricula: %d", Ptr->matricula);
-            printf ("\nCarrera: ");
-            if (Ptr->carrera==1){
-                printf ("Ing. DSSI ");
-            }if(Ptr->carrera==2){
-                printf ("\nIng. Forestal");
-            }if (Ptr->carrera==3){
-                printf ("\nIng. Forestal");
-            }if(Ptr->carrera==4){
-                printf ("\nLic. Biología");
-            }if(Ptr->carrera==5){
-                printf ("\nLic CN Ambientales");
+        while (otroPtr!=NULL){
+            if(otroPtrA->semestre == opse && otroPtrA->carrera == opcarr){
+                printf ("\nPersona %d\n", h+1);
+                printf ("\nNombre: %s", otroPtr->nombre);
+                printf ("\nEdad: %d", otroPtr->Edad);
+                printf ("\nGenero: %c", otroPtr->genero);
+                printf ("\nFecha de nacimiento: %s", otroPtr->Fn);
+                printf ("\nMatricula: %s", otroPtrA->matricula);
+                printf ("\nCarrera: ");
+                    if (otroPtrA->carrera==1){
+                        printf ("\nIng. DSSI ");
+                    }if(otroPtrA->carrera==2){
+                        printf ("\nIng. Forestal");
+                    }if (otroPtrA->carrera==3){
+                        printf ("\nLic. Administración turistica");
+                    }if(otroPtrA->carrera==4){
+                        printf ("\nLic. Biología");
+                    }if(otroPtrA->carrera==5){
+                        printf ("\nLic CN Ambientales");
+                    }
+                    printf ("\nSemestre: %d", otroPtrA->semestre);
+                    printf ("\nCorreo: %s@unsij.edu.mx", otroPtrA->correo);
+                    printf ("\nCalificaciones: ");
+                    for(int i = 0; i < 5; i++){
+                        printf("Calificaciones de Parcial %d\n", i + 1);
+                        for(int j = 0; j < 5; j++){
+                            printf("%.2f ", otroPtrA->calif[i][j]);
+                    }
+                printf("\n");
             }
-            printf ("\nSemestre: %d", Ptr->semestre);
-            printf ("\nCorreo: %d@unsij.edu.mx", Ptr->correo);
-            printf ("\nCalificaciones: ");
-            for (int i=1; i<6; i++){
-                printf ("Calificaciones de %d parcial\n", i);
-                for (int j=0; j<6; j++){
-                    PtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
+                
+                h++;
                 }
-                }
-            
-            otroPtr= otroPtr->Ptrsig;
-            h++;
+            otroPtr = otroPtr->Ptrsig;
+            if (otroPtr != NULL){
+                otroPtrA = otroPtr->PtrAlum;
+            }
         }
 }
 
+
 void Mospornombre (struct Persona **Ptr){
     int h=0;
-    struct Persona *otroPtr=Ptr;
-    char nompers;
+    struct Persona *otroPtr=*Ptr;
+    struct Alumno *otroPtrA = otroPtr->PtrAlum;
+    char nompers[30];
 
     printf ("\n Ingrese el semestre nombre de la persona: ");
     scanf ("%s", nompers);
 
-        while(otroPtr->nombre==nompers){
-            printf ("\nPersona %d\n", h);
-            printf ("\nNombre: %s", Ptr->nombre);
-            printf ("\nEdad: %d", Ptr->edad);
-            printf ("\nGenero: %s", Ptr->genero);
-            printf ("\nFecha de nacimiento: %d", Ptr->Fn);
-            printf ("\nMatricula: %d", Ptr->matricula);
-            printf ("\nCarrera: ");
-            if (Ptr->carrera==1){
-                printf ("Ing. DSSI ");
-            }if(Ptr->carrera==2){
-                printf ("\nIng. Forestal");
-            }if (Ptr->carrera==3){
-                printf ("\nIng. Forestal");
-            }if(Ptr->carrera==4){
-                printf ("\nLic. Biología");
-            }if(Ptr->carrera==5){
-                printf ("\nLic CN Ambientales");
+    while (otroPtr!=NULL){
+        if(strcmp(otroPtr->nombre, nompers) == 0){
+            printf ("\nPersona %d\n", h+1);
+                printf ("\nNombre: %s", otroPtr->nombre);
+                printf ("\nEdad: %d", otroPtr->Edad);
+                printf ("\nGenero: %c", otroPtr->genero);
+                printf ("\nFecha de nacimiento: %s", otroPtr->Fn);
+                printf ("\nMatricula: %s", otroPtrA->matricula);
+                printf ("\nCarrera: ");
+                    if (otroPtrA->carrera==1){
+                        printf ("\nIng. DSSI ");
+                    }if(otroPtrA->carrera==2){
+                        printf ("\nIng. Forestal");
+                    }if (otroPtrA->carrera==3){
+                        printf ("\nLic. Administracion Turistica");
+                    }if(otroPtrA->carrera==4){
+                        printf ("\nLic. Biología");
+                    }if(otroPtrA->carrera==5){
+                        printf ("\nLic CN Ambientales");
+                    }
+                    printf ("\nSemestre: %d", otroPtrA->semestre);
+                    printf ("\nCorreo: %s@unsij.edu.mx", otroPtrA->correo);
+                    printf ("\nCalificaciones: ");
+                    for(int i = 0; i < 5; i++){
+                        printf("Calificaciones de Parcial %d\n", i + 1);
+                        for(int j = 0; j < 5; j++){
+                            printf("%.2f ", otroPtrA->calif[i][j]);
+                    }
+                printf("\n");
             }
-            printf ("\nSemestre: %d", Ptr->semestre);
-            printf ("\nCorreo: %d@unsij.edu.mx", Ptr->correo);
-            printf ("\nCalificaciones: ");
-            for (int i=1; i<6; i++){
-                printf ("Calificaciones de %d parcial\n", i);
-                for (int j=0; j<6; j++){
-                    PtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
-                }
-                }
-            
-            otroPtr= otroPtr->Ptrsig;
-            h++;
+                
+                h++;
+            }
+        otroPtr = otroPtr->Ptrsig;
+        if (otroPtr != NULL){
+            otroPtrA = otroPtr->PtrAlum;
         }
+        }
+        
 }
 
 void Mosmatricula (struct Persona **Ptr){
     int h=0;
-    struct Persona *otroPtr=Ptr;
-    char opma;
+    struct Persona *otroPtr=*Ptr;
+    struct Alumno *otroPtrA = otroPtr->PtrAlum;
+    char opma[10];
 
     printf ("\n Ingrese la matricula:  ");
     scanf ("%s", opma);
 
-        while(otroPtr->matricula==opma){
-            printf ("\nPersona %d\n", h);
-            printf ("\nNombre: %s", Ptr->nombre);
-            printf ("\nEdad: %d", Ptr->edad);
-            printf ("\nGenero: %s", Ptr->genero);
-            printf ("\nFecha de nacimiento: %d", Ptr->Fn);
-            printf ("\nMatricula: %d", Ptr->matricula);
-            printf ("\nCarrera: ");
-            if (Ptr->carrera==1){
-                printf ("Ing. DSSI ");
-            }if(Ptr->carrera==2){
-                printf ("\nIng. Forestal");
-            }if (Ptr->carrera==3){
-                printf ("\nIng. Forestal");
-            }if(Ptr->carrera==4){
-                printf ("\nLic. Biología");
-            }if(Ptr->carrera==5){
-                printf ("\nLic CN Ambientales");
+    while (otroPtr!=NULL){
+         if(strcmp(otroPtrA->matricula, opma)==0){
+            printf ("\nPersona %d\n", h+1);
+                printf ("\nNombre: %s", otroPtr->nombre);
+                printf ("\nEdad: %d", otroPtr->Edad);
+                printf ("\nGenero: %c", otroPtr->genero);
+                printf ("\nFecha de nacimiento: %s", otroPtr->Fn);
+                printf ("\nMatricula: %s", otroPtrA->matricula);
+                printf ("\nCarrera: ");
+                    if (otroPtrA->carrera==1){
+                        printf ("\nIng. DSSI ");
+                    }if(otroPtrA->carrera==2){
+                        printf ("\nIng. Forestal");
+                    }if (otroPtrA->carrera==3){
+                        printf ("\nLic. Administración turistica");
+                    }if(otroPtrA->carrera==4){
+                        printf ("\nLic. Biología");
+                    }if(otroPtrA->carrera==5){
+                        printf ("\nLic CN Ambientales");
+                    }
+                    printf ("\nSemestre: %d", otroPtrA->semestre);
+                    printf ("\nCorreo: %s@unsij.edu.mx", otroPtrA->correo);
+                    printf ("\nCalificaciones: ");
+                    for(int i = 0; i < 5; i++){
+                        printf("Calificaciones de Parcial %d\n", i + 1);
+                        for(int j = 0; j < 5; j++){
+                            printf("%.2f ", otroPtrA->calif[i][j]);
+                    }
+                printf("\n");
             }
-            printf ("\nSemestre: %d", Ptr->semestre);
-            printf ("\nCorreo: %d@unsij.edu.mx", Ptr->correo);
-            printf ("\nCalificaciones: ");
-            for (int i=1; i<6; i++){
-                printf ("Calificaciones de %d parcial\n", i);
-                for (int j=0; j<6; j++){
-                    PtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
-                }
-                }
-            
-            otroPtr= otroPtr->Ptrsig;
-            h++;
+                
+                h++;
         }
+        otroPtr = otroPtr->Ptrsig;
+        if (otroPtr != NULL){
+            otroPtrA = otroPtr->PtrAlum;
+        }
+
+    }
+       
 }
+
+void CasosMostrar(int opM, struct Persona **Ptr){
+        if(*Ptr!=NULL){
+            
+        switch(opM){
+                case 1:
+                    Mostrartodo(Ptr);
+                break;
+
+                case 2:
+                    Mostrarporcarrera(Ptr);
+                break;
+
+                case 3:
+                    Mostrarporsemestre (Ptr);
+                break;
+
+                case 4:
+                    Mcarreraysemestre (Ptr);
+                break;
+
+                case 5:
+                    Mospornombre (Ptr);
+                break;
+
+                case 6:
+                    Mosmatricula (Ptr);
+                break;
+
+                default:
+                printf ("\n Eleccion no valida, intente de nuevo\n");
+                break; 
+                }
+            }else{
+                printf ("\nNo existe nada que imprimir\n");
+            }
+
+    }
