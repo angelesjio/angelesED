@@ -1,11 +1,13 @@
+#ifndef BAJAS_H
+#define BAJAS_H
+
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h>     
 #include "estructuras.h"
 
 int Baja (struct Persona **Ptr);
 int VariasBajas (struct Persona **Ptr);
 int Eliminartodo (struct Persona **Ptr);
-void Salir (struct Persona **Ptr);
 void Casosbajas(int opB, struct Persona **Ptr);
 
 
@@ -94,6 +96,5 @@ int Eliminartodo (struct Persona **Ptr){
     return b;
 }
 
-void Salir (struct Persona **Ptr){
-    Eliminartodo(Ptr);
-}
+
+#endif
