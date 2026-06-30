@@ -16,16 +16,17 @@ void CasosMostrar(int opM, struct Persona **Ptr);
 void Mostrartodo(struct Persona **Ptr){
     int h=0;
     struct Persona *otroPtr=*Ptr;
-    struct Alumno *otroPtrA = otroPtr->PtrAlum;
     
-        while(otroPtr!=NULL){
-            printf ("\nPersona %d\n", h+1);
-            printf ("\nNombre: %s", otroPtr->nombre);
-            printf ("\nEdad: %d", otroPtr->Edad);
-            printf ("\nGenero: %c", otroPtr->genero);
-            printf ("\nFecha de nacimiento: %s", otroPtr->Fn);
-            printf ("\nMatricula: %s", otroPtrA->matricula);
-            printf ("\nCarrera: ");
+    while(otroPtr!=NULL){
+        struct Alumno *otroPtrA = otroPtr->PtrAlum; 
+        
+        printf ("\nPersona %d\n", h+1);
+        printf ("\nNombre: %s", otroPtr->nombre);
+        printf ("\nEdad: %d", otroPtr->Edad);
+        printf ("\nGenero: %c", otroPtr->genero);
+        printf ("\nFecha de nacimiento: %s", otroPtr->Fn);
+        printf ("\nMatricula: %s", otroPtrA->matricula);
+        printf ("\nCarrera: ");
             if (otroPtrA->carrera==1){
                 printf ("\nIng. DSSI ");
             }if(otroPtrA->carrera==2){
