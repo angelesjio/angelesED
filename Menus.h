@@ -1,15 +1,17 @@
+#ifndef MENUS_H
+#define MENUS_H
+
 #include <stdio.h>
-
 #include "estructuras.h"
-
 
 int menuPrincipal(void);
 int MenuAltas(void);
 int MenuBajas(void);
 int Carrera(void);
+int MenuMostrar(void);
+int Funcionesespeciales(struct Persona **Ptr);
 
-int MenuMostrar();
-int Funcionesespeciales (struct Persona **Ptr);
+
 
     int menuPrincipal(void){
         int op; 
@@ -105,3 +107,5 @@ int Funcionesespeciales (struct Persona **Ptr){
     }
     
 }
+
+#endif
