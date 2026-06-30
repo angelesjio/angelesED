@@ -41,6 +41,7 @@ int main(){
 
             case 4:
                 opFun=Funcionesespeciales (&Ptr);
+                if (Ptr!=NULL){
                     switch (opFun){
                     case 1:
                         casosmodificar(&Ptr);
@@ -54,10 +55,15 @@ int main(){
                         printf ("\n Opcion no valida, intente de nuevo\n");
                         break;
                     }
+
+                    }else{
+                        printf ("\nNo se ha generao memoria, no se puede acceder a este menu\n");
+                        return 0;
+                    }
             break;
 
             case 5:
-                Eliminartodo(&Ptr); 
+                Salir(&Ptr); 
                 printf ("\n saliendo\n");
             break; 
             
