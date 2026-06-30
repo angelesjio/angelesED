@@ -67,7 +67,7 @@ void Mostrarporcarrera(struct Persona **Ptr){
     struct Alumno *otroPtrA = otroPtr->PtrAlum;
     int impcarr;
 
-    printf ("\nCARRERAS ");
+    printf ("\nCarreras :D");
         printf ("\n1) Ing. DSSI ");
         printf ("\n2) Ing. Forestal");
         printf ("\n3) Lic. Administración Turística");
