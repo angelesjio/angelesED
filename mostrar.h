@@ -330,6 +330,7 @@ void Mosmatricula (struct Persona **Ptr){
                     for(int i = 0; i < 5; i++){
                         printf("Calificaciones de Parcial %d\n", i + 1);
                         for(int j = 0; j < 5; j++){
+                            otroPtrA->calif[i][j]= 3 + rand() % (9 - 3 + 1);
                             printf("%.2f ", otroPtrA->calif[i][j]);
                     }
                 printf("\n");
