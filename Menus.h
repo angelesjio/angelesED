@@ -64,6 +64,7 @@ int Funcionesespeciales(struct Persona **Ptr);
         printf ("1) Dar de baja a una persona\n");
         printf ("2) Dar de baja a varias personas\n");
         printf ("3) Eliminar la base de datos \n");
+        printf ("4 Salir\n");
         printf ("Escoja una opción: ");
         scanf ("%d", &opBA);
 
@@ -82,6 +83,7 @@ int Funcionesespeciales(struct Persona **Ptr);
         printf ("4 Mostrar por carrera y semestre \n");
         printf ("5 Mostrar por nombre\n");
         printf ("6 Mostrar por matricula\n");
+        printf ("7 Salir\n");
         printf ("INgrese su elección: ");
         scanf ("%d", &opMos);
 
@@ -93,7 +95,7 @@ int Funcionesespeciales(struct Persona **Ptr);
 int Funcionesespeciales (struct Persona **Ptr){
 
     int funcion;
-    if (*Ptr!=NULL){
+    
         printf ("\n Funciones especiales :)");
         printf ("\n1) Modificar");
         printf ("\n2) Calificaciones");
@@ -101,10 +103,7 @@ int Funcionesespeciales (struct Persona **Ptr){
         scanf ("%d", &funcion);
 
         return funcion;
-    }else{
-        printf ("\nNo se ha generao memoria, no se puede acceder a este menu\n");
-        return 0;
-    }
+    
     
 }
 
