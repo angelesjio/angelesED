@@ -114,6 +114,10 @@ void Mostrarporcarrera(struct Persona **Ptr){
                 otroPtrA = otroPtr->PtrAlum;
             }
         }
+
+        if(h==0){
+            printf ("\nNo se encontraron coincidencias\n");
+        }
         
             
 }
@@ -166,6 +170,10 @@ void Mostrarporsemestre (struct Persona **Ptr){
             if (otroPtr != NULL){
                 otroPtrA = otroPtr->PtrAlum;
             }
+        }
+
+        if(h==0){
+            printf ("\nNo se encontraron coincidencias\n");
         }
         
 }
@@ -226,6 +234,10 @@ void Mcarreraysemestre (struct Persona **Ptr){
                 otroPtrA = otroPtr->PtrAlum;
             }
         }
+
+        if(h==0){
+            printf ("\nNo se encontraron coincidencias\n");
+        }
 }
 
 
@@ -275,6 +287,10 @@ void Mospornombre (struct Persona **Ptr){
         if (otroPtr != NULL){
             otroPtrA = otroPtr->PtrAlum;
         }
+        }
+
+        if(h==0){
+            printf ("\nNo se encontraron coincidencias\n");
         }
         
 }
@@ -327,6 +343,10 @@ void Mosmatricula (struct Persona **Ptr){
         }
 
     }
+
+    if(h==0){
+            printf ("\nNo se encontraron coincidencias\n");
+        }
        
 }
 
@@ -357,6 +377,10 @@ void CasosMostrar(int opM, struct Persona **Ptr){
                 case 6:
                     Mosmatricula (Ptr);
                 break;
+
+                case 7:
+                printf ("\n Saliendo\n");
+                    break;
 
                 default:
                 printf ("\n Eleccion no valida, intente de nuevo\n");
