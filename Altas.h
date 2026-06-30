@@ -1,6 +1,6 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include "Menus.h"
 #include "estructuras.h"
 
     struct Persona *PtrP;
@@ -10,9 +10,34 @@
     struct Alumno *nuevoAlumno();
     int Ingresar (struct Persona **Ptr);
     int IngresoVarios (struct Persona **Ptr);
+    void CasosAltas(int opA, struct Persona **Ptr);
+
+    
+    void CasosAltas(int opA, struct Persona **Ptr){
+        switch (opA){
+            case 1:
+                    if(Ingresar (Ptr)){
+                        printf("Se ingreso correctamente\n");
+                    }else{
+                        printf("No se pudo crear la persona\n");
+                    }
+                    break;
+
+                case 2:
+                    if(IngresoVarios(Ptr)){
+                        printf("Personas creadas correctamente\n");
+                    }else{
+                        printf("No se pudo crear las personas\n");
+                    } 
+                break; 
+
+                default:
+                    printf ("Opcion no encontrada, intente de nuevo\n");
+                break;
+            }
+    }
 
 
-//Ingresa una persona
 
     int Ingresar (struct Persona **Ptr){
         struct Persona *P=NULL;
@@ -27,86 +52,56 @@
             }else{
             A = nuevoAlumno();
             if (A==NULL){
-                //printf ("No se pudo crear memoria\n");
                 b=0;
+                free(P->nombre);
                 free(P);
             }else{
-            P->PtrAlum=A;
-            P->Ptrsig=*Ptr;
-            *Ptr=P;
+                P->PtrAlum=A;
+                P->Ptrsig=*Ptr;
+                *Ptr=P;
             }
         }
-        
-      return b;
+        return b;
     }
 
-    //Ingresa varias personas
-
-
-     int IngresoVarios (struct Persona **Ptr){
-        struct Persona *P=NULL;
-        struct Alumno *A=NULL;
-        struct Persona *Ptrauxiliar=NULL;
-        int b=1;
+    int IngresoVarios (struct Persona **Ptr){
         int OpA2;
+        int b=1;
 
-        do{
-            P = nuevaPersona();
+        do {
+            if(Ingresar (Ptr)){
+                b=1;
+            }else{
+                b=0;
+            }
+            printf ("Desea seguir ingresando personas? (1)Si (0)No\n");
+            scanf ("%d", &OpA2);
 
-        if (P==NULL){
-            //printf ("NO se pudo crear persona\n");
-            b=0;
-                }else{
-                A = nuevoAlumno();
-                if (A==NULL){
-                    //printf ("No se pudo crear memoria\n");
-                    b=0;
-                    free(P);
-                }else{
-                        if (Ptr==NULL){
-                            *Ptr=P;
-                        }else{
-                           /*Ptrauxiliar=*Ptr;
-                        while(Ptrauxiliar->Ptrsig!= NULL){
-                            Ptrauxiliar=Ptrauxiliar->Ptrsig;
-                        }*/
-                            P->PtrAlum=A;
-                            P->Ptrsig=*Ptr;
-                            *Ptr=P; 
-                        
-                        }
-                    }
-                }
+        }while (OpA2 != 0);
 
-        printf ("Desea seguir ingresando personas? (1)Si (0)No\n");
-        scanf ("%d", &OpA2);
-        }while (OpA2!=0);
-        
-        
-      return b;
+        return b;
     }
 
     struct Persona *nuevaPersona(){
-        struct Persona *PtrP=(struct Persona*)malloc(sizeof(struct Persona));
-        PtrP->nombre =(char*) malloc(50*sizeof(char));
+        struct Persona *PtrP;
+        PtrP=(struct Persona*)malloc(sizeof(struct Persona));
 
         if (PtrP!=NULL) {
-            printf ("Ingrese el nombre; ");
-            scanf (" ");
+            PtrP->nombre =(char*) malloc(50*sizeof(char));
+            printf ("Ingrese el nombre: ");
+            scanf(" ");
             fgets(PtrP->nombre, 50, stdin);
-            printf ("INgrese genero; ");
-            scanf (" ");
-            scanf ("%c", &(PtrP->genero));
-            printf ("INgrese edad; ");
+            printf ("Ingrese genero: ");
+            scanf (" %c", &(PtrP->genero));
+            printf ("Ingrese edad: ");
             scanf ("%d", &(PtrP->Edad));
-            printf ("INgrese fecha de nacimiento; ");
+            printf ("Ingrese fecha de nacimiento (DDMMAAAA): ");
             scanf (" ");
             fgets(PtrP->Fn, 9, stdin);
             
         }
 
         return PtrP; 
-
     }
 
     struct Alumno* nuevoAlumno(void){
@@ -115,41 +110,33 @@
 
         if(PtrA!=NULL){ 
 
-            printf ("Ingrese carrera; ");
+            printf ("Ingrese carrera: ");
             PtrA->carrera= Carrera( );
-            printf ("\nINgrese matricula; ");
+            printf ("\nIngrese matricula: ");
             scanf (" ");
-            fflush(stdin);
             fgets (PtrA->matricula, 10, stdin);
-            printf ("Ingrese semestre (ejemplo. 1,2,3...); ");
-            //fflush(stdin);//ahora aqui ajajsjajsa
+            printf ("Ingrese semestre (1,2,3...,etc): ");
             scanf ("%d", &PtrA->semestre);
-            printf ("INgrese correo; ");
-            scanf (" ");
-            //corregir correo electrónico 
-            fgets (PtrA->correo, 25, stdin);
-            printf ("\nSe asignaron las calificaciones correctamente *u*/ \n");
+            printf ("\n Correo asignado :D");
+            
+            PtrA->correo[0] = 'a';
+            PtrA->correo[1] = 'l';
+            
+            for(int i=0; i<4; i++){
+                PtrA->correo[i+2] = PtrA->matricula[i];
             }
-
-        return PtrA; 
-
-}
-
-
-
-
-    //Cosas que si se tiene tiempo se haga :0
-//En edad no debe de aceptar letras
-
-
-/* Ptraux-> nombre= (char*) malloc (sizeof (stilen(nombre)+1)*char);
-        printf ("Ingrese el nombre: ");
-        scanf ("%s", &Ptraux->nombre);
-
-        printf ("\nEs alumno (1) o Personal (2)\n");
-        scanf ("%d", &opcion);
+            for(int i=0; i<4; i++){
+                PtrA->correo[i+6] = PtrA->matricula[i+6];
+            }
+            PtrA->correo[10] = '\0';
+            
+            for (int i=0; i<5; i++){
+                for (int j=0; j<5; j++){
+                    PtrA->calif[i][j]= 3 + rand() % 8;
+                }
+            }
+            printf ("\nSe asignaron las calificaciones correctamente *u*/ \n");
+        } 
         
-
-        printf("~~Ingrese datos~~\n");
-        if ()*/
-
+        return PtrA; 
+    }
