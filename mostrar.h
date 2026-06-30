@@ -1,7 +1,10 @@
+#ifndef MOSTRAR_H
+#define MOSTRAR_H
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>     
 #include "estructuras.h"
-#include <string.h>
 
 void Mostrartodo(struct Persona **Ptr);
 void Mostrarporcarrera(struct Persona **Ptr);
@@ -364,3 +367,5 @@ void CasosMostrar(int opM, struct Persona **Ptr){
             }
 
     }
+
+#endif
