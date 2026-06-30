@@ -7,12 +7,7 @@ int MenuAltas(void);
 int MenuBajas(void);
 void Casosbajas(int opB, struct Persona **Ptr);
 void CasosAltas(int opA, struct Persona **Ptr);
-void CasosMostrar(int opM, struct Persona **Ptr);
 int Carrera(void);
-void Mostrartodo(struct Persona **Ptr);
-void Mostrarporcarrera(struct Persona **Ptr);
-void Mostrarporsemestre (struct Persona **Ptr);
-void Mcarreraysemestre (struct Persona **Ptr);
 
 int MenuMostrar();
 
@@ -142,43 +137,6 @@ void Casosbajas(int opB, struct Persona **Ptr){
 
     }
 
-    void CasosMostrar(int opM, struct Persona **Ptr){
-        if(Ptr!=NULL){
-            
-        switch(opM){
-                case 1:
-                    Mostrartodo(Ptr);
-                break;
-
-                case 2:
-                    Mostrarporcarrera(Ptr);
-                break;
-
-                case 3:
-                    Mostrarporsemestre (Ptr)
-                break;
-
-                case 4:
-                    Mcarreraysemestre (Ptr)
-                break;
-
-                case 5:
-                    Mospornombre (Ptr)
-                break;
-
-                case 6:
-                    Mosmatricula (Ptr)
-                break;
-
-                default:
-                printf ("\n Eleccion no valida, intente de nuevo\n");
-                break; 
-                }
-            }else{
-                printf ("\nNo existe nada que imprimir\n");
-            }
-
-    }
 
 int Funcionesespeciales (void){
     int funcion;
