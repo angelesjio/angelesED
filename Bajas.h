@@ -9,9 +9,11 @@ int Baja (struct Persona **Ptr);
 int VariasBajas (struct Persona **Ptr);
 int Eliminartodo (struct Persona **Ptr);
 void Casosbajas(int opB, struct Persona **Ptr);
+int Salir (struct Persona **Ptr);
 
 
 void Casosbajas(int opB, struct Persona **Ptr){
+    
     switch (opB){
         case 1:
             if(Baja (Ptr)){
@@ -29,72 +31,87 @@ void Casosbajas(int opB, struct Persona **Ptr){
             if(Eliminartodo (Ptr)){
                 printf("Toda la base de datos ha sido eliminada\n");
             }   
-        break; 
+            break; 
+
+        case 4:
+            printf ("\nSaliendo\n");
+            break;
 
         default:
             printf ("Opcion no encontrada, intente de nuevo\n");
-        break; 
+            break; 
     }
 }
 
 
 int Baja (struct Persona **Ptr){
-    struct Persona *Ptrauxiliar=*Ptr;
-
-    int b=1;
-
-    if (Ptrauxiliar==NULL){
-        printf ("No se ha reservado memoria\n");
-        b=0; 
-    }else{
-        *Ptr=(*Ptr)->Ptrsig;
-        
-        free(Ptrauxiliar->nombre);
-        free (Ptrauxiliar->PtrAlum);
-        free(Ptrauxiliar);
-
-        b=1;
+    
+    if (Ptr == NULL || *Ptr == NULL){
+        printf ("No hay elementos en la lista / Memoria no reservada\n");
+        return 0;
     }
-    return b;
+
+    struct Persona *Ptrauxiliar = *Ptr;
+
+    
+    *Ptr = (*Ptr)->Ptrsig;
+    
+    
+    free(Ptrauxiliar->nombre);
+    free(Ptrauxiliar->PtrAlum);
+    free(Ptrauxiliar);
+
+    return 1;
 }
 
 int VariasBajas (struct Persona **Ptr){
-    int b=1;
+    int b = 1;
     int opB;
 
-    do{
-        if (*Ptr==NULL){
-            printf ("No se ha reservado memoria\n");
-            b=0; 
-            break;
-        }else{
-            Baja(Ptr);
-            b=1;
+    do {
+        if (*Ptr == NULL){
+            printf ("La lista se ha quedado vacía.\n");
+            return b;
+        }
+        
+        if (Baja(Ptr)) {
+            b = 1;
         }
 
-        printf ("\n Desea seguir eliminando? (1) Si, (0) No\n");
+        printf ("\n¿Desea seguir eliminando? (1) Si, (0) No\n");
         scanf ("%d", &opB);
-    } while(opB!=0);
+
+    } while(opB != 0);
 
     return b; 
 }
 
 int Eliminartodo (struct Persona **Ptr){
-    int b=1;
-
-    if (*Ptr==NULL){
-        printf ("No hay nada que aliminar\n");
-        b=0; 
-
-    }else{
-        while(*Ptr != NULL){
-            Baja(Ptr);
-        }
-        b=1;
+    if(*Ptr == NULL){
+        printf("No hay personas que eliminar\n");
+        return 0;
     }
+    
+    
+    while(*Ptr != NULL){
+        Baja(Ptr);
+    }
+    printf("Todas las personas fueron eliminadas\n");
 
-    return b;
+    return 1; 
 }
 
+
+int Salir (struct Persona **Ptr){
+    if(*Ptr == NULL){
+        return 1;
+    }
+    
+    while(*Ptr != NULL){
+        Baja(Ptr);
+    }
+    
+    return 1;
+}
 
 #endif
