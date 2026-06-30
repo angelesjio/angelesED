@@ -1,10 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "Menus.h"
-#include "estructuras.h"
+#ifndef ALTAS_H
+#define ALTAS_H
 
-    struct Persona *PtrP;
-    struct Alumno *PtrA;
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>      
+#include "estructuras.h" 
+#include "Menus.h"
+
 
     struct Persona *nuevaPersona();
     struct Alumno *nuevoAlumno();
@@ -88,16 +90,22 @@
 
         if (PtrP!=NULL) {
             PtrP->nombre =(char*) malloc(50*sizeof(char));
+                if(PtrP->nombre==NULL){
+                    free(PtrP);
+                    return NULL;
+                }
             printf ("Ingrese el nombre: ");
             scanf(" ");
             fgets(PtrP->nombre, 50, stdin);
+            PtrP->nombre[strcspn(PtrP->nombre,"\n")]=0;
             printf ("Ingrese genero: ");
             scanf (" %c", &(PtrP->genero));
             printf ("Ingrese edad: ");
             scanf ("%d", &(PtrP->Edad));
             printf ("Ingrese fecha de nacimiento (DDMMAAAA): ");
             scanf (" ");
-            fgets(PtrP->Fn, 9, stdin);
+            fgets(PtrP->Fn, 11, stdin);
+            PtrP->Fn[strcspn(PtrP->Fn,"\n")]=0;
             
         }
 
@@ -114,8 +122,9 @@
             PtrA->carrera= Carrera( );
             printf ("\nIngrese matricula: ");
             scanf (" ");
-            fgets (PtrA->matricula, 10, stdin);
-            printf ("Ingrese semestre (1,2,3...,etc): ");
+            fgets (PtrA->matricula, 11, stdin);
+            PtrA->matricula[strcspn(PtrA->matricula,"\n")]=0;
+            printf ("Ingrese semestre (ejemplo. 1,2,3...): ");
             scanf ("%d", &PtrA->semestre);
             printf ("\n Correo asignado :D");
             
@@ -140,3 +149,5 @@
         
         return PtrA; 
     }
+
+#endif
