@@ -1,15 +1,15 @@
 #include <stdio.h>
+
 #include "estructuras.h"
 
 
 int menuPrincipal(void);
 int MenuAltas(void);
 int MenuBajas(void);
-void Casosbajas(int opB, struct Persona **Ptr);
-void CasosAltas(int opA, struct Persona **Ptr);
 int Carrera(void);
 
 int MenuMostrar();
+int Funcionesespeciales (struct Persona **Ptr);
 
     int menuPrincipal(void){
         int op; 
@@ -69,56 +69,6 @@ int MenuMostrar();
     }
 
 
-void CasosAltas(int opA, struct Persona **Ptr){
-    switch (opA){
-        case 1:
-                if(Ingresar (Ptr)){
-                    printf("Se ingreso correctamente\n");
-                }else{
-                    printf("No se pudo crear la persona\n");
-                }
-                break;
-
-            case 2:
-                if(IngresoVarios(Ptr)){
-                    printf("Personas creadas correctamente\n");
-                }else{
-                    printf("No se pudo crear las personas\n");
-                } 
-            break; 
-
-            default:
-                printf ("Opcion no encontrada, intente de nuevo\n");
-            break;
-        }
-}
-
-void Casosbajas(int opB, struct Persona **Ptr){
-    switch (opB){
-        case 1:
-            if(Baja (Ptr)){
-                printf("Se ha eliminado una persona\n");
-            }
-            break;
-
-        case 2:
-            if(VariasBajas(Ptr)){
-                printf("Personas eliminadas correctamente\n");
-            }
-            break; 
-
-        case 3:
-                if(Eliminartodo (Ptr)){
-                printf("Toda la base de datos ha sido eliminada\n");
-            }   
-        break; 
-
-        default:
-            printf ("Opcion no encontrada, intente de nuevo\n");
-        break; 
-
-        }
-}
 
     int MenuMostrar(void){
         int opMos; 
@@ -138,13 +88,20 @@ void Casosbajas(int opB, struct Persona **Ptr){
     }
 
 
-int Funcionesespeciales (void){
-    int funcion;
-    printf ("\n Funciones especiales :)");
-    printf ("\n1) Modificar");
-    printf ("\n2) Calificaciones");
-    printf ("\nEscoja una opción: ");
-    scanf ("%d", &funcion);
+int Funcionesespeciales (struct Persona **Ptr){
 
-    return funcion;
+    int funcion;
+    if (*Ptr!=NULL){
+        printf ("\n Funciones especiales :)");
+        printf ("\n1) Modificar");
+        printf ("\n2) Calificaciones");
+        printf ("\nEscoja una opción: ");
+        scanf ("%d", &funcion);
+
+        return funcion;
+    }else{
+        printf ("\nNo se ha generao memoria, no se puede acceder a este menu\n");
+        return 0;
+    }
+    
 }
