@@ -98,14 +98,13 @@
             scanf(" ");
             fgets(PtrP->nombre, 50, stdin);
             PtrP->nombre[strcspn(PtrP->nombre,"\n")]=0;
-            printf ("Ingrese genero: ");
+            printf ("Ingrese genero: (F o M)");
             scanf (" %c", &(PtrP->genero));
-            printf ("Ingrese edad: ");
+            printf ("INgrese edad; ");
             scanf ("%d", &(PtrP->Edad));
-            printf ("Ingrese fecha de nacimiento (DDMMAAAA): ");
+            printf ("INgrese fecha de nacimiento; ");
             scanf (" ");
-            fgets(PtrP->Fn, 11, stdin);
-            PtrP->Fn[strcspn(PtrP->Fn,"\n")]=0;
+            fgets(PtrP->Fn, 9, stdin);
             
         }
 
@@ -126,25 +125,33 @@
             PtrA->matricula[strcspn(PtrA->matricula,"\n")]=0;
             printf ("Ingrese semestre (ejemplo. 1,2,3...): ");
             scanf ("%d", &PtrA->semestre);
-            printf ("\n Correo asignado :D");
+            printf ("\n Correo asignado :D: ");
             
-            PtrA->correo[0] = 'a';
-            PtrA->correo[1] = 'l';
-            
+            switch(PtrA->carrera){
+            case 1:
+                strcpy(PtrA->correo, "ca");
+                break;
+            case 2:
+                strcpy(PtrA->correo, "if");
+                break;
+            case 3:
+                strcpy(PtrA->correo, "ds");
+                break;
+            case 4:
+                strcpy(PtrA->correo, "lb");
+                break;
+            case 5:
+                strcpy(PtrA->correo, "at");
+                break;
+            }
             for(int i=0; i<4; i++){
                 PtrA->correo[i+2] = PtrA->matricula[i];
             }
             for(int i=0; i<4; i++){
                 PtrA->correo[i+6] = PtrA->matricula[i+6];
             }
-            PtrA->correo[10] = '\0';
-            
-            for (int i=0; i<5; i++){
-                for (int j=0; j<5; j++){
-                    PtrA->calif[i][j]= 3 + rand() % 8;
-                }
-            }
-            printf ("\nSe asignaron las calificaciones correctamente *u*/ \n");
+                PtrA->correo[10] = '\0';
+                printf(" %s@unsij.edu.mx\n", PtrA->correo);
         } 
         
         return PtrA; 
