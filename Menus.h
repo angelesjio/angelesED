@@ -15,7 +15,7 @@ int Funcionesespeciales(struct Persona **Ptr);
 
     int menuPrincipal(void){
         int op; 
-        printf ("\n ---MENU--- \n");
+        printf ("\nMenu principal\n");
         printf ("1 Ingresar persona\n");
         printf ("2 Eliminar\n");
         printf ("3 Mostrar\n");
@@ -31,7 +31,7 @@ int Funcionesespeciales(struct Persona **Ptr);
     int MenuAltas(void){
         int opA;
 
-        printf ("\nMenú altas\n");
+        printf ("\nMenu altas\n");
         printf ("\n1) Ingresar una persona");
         printf ("\n2) Ingresar varias personas");
         printf ("\nEscoja una opción: ");
@@ -60,7 +60,7 @@ int Funcionesespeciales(struct Persona **Ptr);
     int MenuBajas(void){
         int opBA;
 
-        printf ("Manú bajas\n");
+        printf ("Manu bajas\n");
         printf ("1) Dar de baja a una persona\n");
         printf ("2) Dar de baja a varias personas\n");
         printf ("3) Eliminar la base de datos \n");
