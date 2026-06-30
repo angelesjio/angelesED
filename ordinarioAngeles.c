@@ -1,10 +1,12 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-#include "Menus.h"
-#include "Altas.h"
-#include "Bajas.h"
 #include "estructuras.h"
+#include "Menus.h"       
+#include "Altas.h"      
+#include "Bajas.h"
+#include "mostrar.h"
+#include "funespeciales.h"
 
 int main(){
     struct Persona *Ptr=NULL;
@@ -12,6 +14,7 @@ int main(){
     int opA;
     int opB;
     int opM;
+    int opFun;
     
     do{
         op=menuPrincipal();
@@ -36,24 +39,34 @@ int main(){
             }
             break;
 
-            case 4://FUNCIONES ESPECIALES
-                printf ("\n Saliendo...");
+            case 4:
+                opFun=Funcionesespeciales (&Ptr);
+                    switch (opFun){
+                    case 1:
+                        casosmodificar(&Ptr);
+                        break;
+
+                    case 2:
+                        casoscalificaciones ();
+                        break;
+    
+                    default:
+                        printf ("\n Opcion no valida, intente de nuevo\n");
+                        break;
+                    }
             break;
 
             case 5:
-                Salir(Ptr);
+                Salir(&Ptr); 
+                printf ("\n saliendo\n");
             break; 
             
             default:
                 printf ("\nOpcion no encontrada, intente de nuevo....\n");
             break; 
-            
-            
         }
-        
         
     }while (op!=5);
 
     return 0;
 }
-
