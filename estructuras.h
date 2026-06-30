@@ -1,25 +1,24 @@
-#ifndef STRUCTS_H
-#define STRUCTS_H
+#ifndef ESTRUCTURAS_H
+#define ESTRUCTURAS_H
 
 #include <stdio.h>
-    struct Alumno{
-    char matricula[10];
+
+struct Alumno{
+    char matricula[11];
     int carrera;
     int semestre;
     char correo[25];
     float calif[5][5];
+};
 
-    };
-
-    struct Persona{
+struct Persona{
     char *nombre;
     int Edad;
-    char genero; 
-    char Fn[9];
+    char genero;
+    char Fn[11];        
 
     struct Alumno *PtrAlum;
-    struct Persona *Ptrsig;  
-    };
-
+    struct Persona *Ptrsig;
+};
 
 #endif
