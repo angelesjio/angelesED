@@ -97,7 +97,6 @@
             printf ("Ingrese el nombre: ");
             scanf(" ");
             fgets(PtrP->nombre, 50, stdin);
-            PtrP->nombre[strcspn(PtrP->nombre,"\n")]=0;
             printf ("Ingrese genero: (F o M)");
             scanf (" %c", &(PtrP->genero));
             printf ("INgrese edad; ");
