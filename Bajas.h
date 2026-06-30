@@ -47,7 +47,7 @@ void Casosbajas(int opB, struct Persona **Ptr){
 int Baja (struct Persona **Ptr){
     
     if (Ptr == NULL || *Ptr == NULL){
-        printf ("No hay elementos en la lista / Memoria no reservada\n");
+        printf ("No ay memoria reservada\n");
         return 0;
     }
 
