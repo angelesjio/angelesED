@@ -102,7 +102,7 @@
             scanf (" %c", &(PtrP->genero));
             printf ("INgrese edad; ");
             scanf ("%d", &(PtrP->Edad));
-            printf ("INgrese fecha de nacimiento; ");
+            printf ("INgrese fecha de nacimiento dd/mm/aa: ");
             scanf (" ");
             fgets(PtrP->Fn, 9, stdin);
             
@@ -144,6 +144,7 @@
                 strcpy(PtrA->correo, "at");
                 break;
             }
+
             for(int i=0; i<4; i++){
                 PtrA->correo[i+2] = PtrA->matricula[i];
             }
@@ -152,6 +153,15 @@
             }
                 PtrA->correo[10] = '\0';
                 printf(" %s@unsij.edu.mx\n", PtrA->correo);
+            
+                printf("\nCalificaciones asignadas\n");
+                for(int i = 0; i < 5; i++){
+                        for(int j = 0; j < 5; j++){
+                            PtrA->calif[i][j] = 3 + rand() % (9 - 3 + 1);
+                }
+                    }
+
+                
         } 
         
         return PtrA; 
