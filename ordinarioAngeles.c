@@ -57,7 +57,7 @@ int main(){
             break;
 
             case 5:
-                Salir(&Ptr); 
+                Eliminartodo(&Ptr); 
                 printf ("\n saliendo\n");
             break; 
             
