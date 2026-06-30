@@ -1,7 +1,10 @@
+#ifndef FUNESPECIALES_H
+#define FUNESPECIALES_H
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "estructuras.h"
 #include <string.h>
+#include "estructuras.h"
 
     void casosmodificar(struct Persona **Ptr);
     void modificarcalparcial(struct Persona **Ptr);
@@ -18,14 +21,14 @@
         int opcionA3;
 
         printf ("\nOpciones\n");
-        printf ("\n1) Calificaciones de un alumno");
-        printf ("\n2) Datos");
+        printf ("\n1 Calificaciones de un alumno");
+        printf ("\n2 Datos");
         printf ("\nEscoja una opcion: ");
         scanf ("%d", &opcionA);
         switch (opcionA){
             case 1:
-            printf ("\n1) Todas las calificaciones de un parcial");
-            printf ("\n2) Todos los parciales de una materia");
+            printf ("\n1 Todas las calificaciones de un parcial");
+            printf ("\n2 Todos los parciales de una materia");
             printf ("\nIngrese su opcion: ");
             scanf ("%d", &opcionA2);
                 switch (opcionA2){
@@ -44,8 +47,8 @@
             break;
 
             case 2:
-            printf ("\n1) Datos de la persona");
-            printf ("\n2) Datos del alumno");
+            printf ("\n1 Datos de la persona");
+            printf ("\n2 Datos del alumno");
             printf ("\nIngrese su opcion: ");
             scanf ("%d", &opcionA3);
                 switch (opcionA3){
@@ -68,7 +71,7 @@
 
     void modificarcalparcial(struct Persona **Ptr){
         struct Persona *otroPtr=*Ptr;
-        char opma[10];
+        char opma[11];
         printf ("\n Ingrese la matricula del alumno: ");
         scanf ("%s", opma);
 
@@ -93,7 +96,7 @@
 
     void todosparcmateria(struct Persona **Ptr){
         struct Persona *otroPtr = *Ptr;
-        char opma[10];
+        char opma[11];
         printf ("\n Ingrese la matricula del alumno: ");
         scanf ("%s", opma);
 
@@ -126,8 +129,10 @@
 
         while (otroPtr!=NULL){
             if (strcmp(otroPtr->nombre, nom)==0){
-                printf ("\n Ingrese el nuevo nombre de la persona: ");
-                fgets(otroPtr->nombre, 50, stdin);
+                printf("\nIngrese el nuevo nombre de la persona: ");
+                    scanf(" ");
+                    fgets(otroPtr->nombre,50,stdin);
+                    otroPtr->nombre[strcspn(otroPtr->nombre,"\n")]=0;
                 
                 printf ("\n Ingrese la nueva edad de la persona: ");
                 scanf ("%d", &otroPtr->Edad); 
@@ -149,7 +154,7 @@
 
     void datosAlumno (struct Persona **Ptr){
         struct Persona *otroPtr=*Ptr;
-        char mat[10];
+        char mat[11];
         printf ("\n Ingrese la matricula del alumno que desea modificar: ");
         scanf ("%s", mat);
 
@@ -157,6 +162,17 @@
             if (strcmp(otroPtr->PtrAlum->matricula, mat)==0){
                 printf ("\n Ingrese la nueva matricula del alumno: ");
                 scanf ("%s", otroPtr->PtrAlum->matricula);
+
+                otroPtr->PtrAlum->correo[0]='a';
+                otroPtr->PtrAlum->correo[1]='l';
+
+                for(int i=0;i<4;i++)
+                    otroPtr->PtrAlum->correo[i+2]=otroPtr->PtrAlum->matricula[i];
+
+                for(int i=0;i<4;i++)
+                    otroPtr->PtrAlum->correo[i+6]=otroPtr->PtrAlum->matricula[i+6];
+
+                otroPtr->PtrAlum->correo[10]='\0';
                 
                 printf ("\n Ingrese el nuevo semestre del alumno: ");
                 scanf ("%d", &otroPtr->PtrAlum->semestre);
@@ -175,16 +191,16 @@
         int opB11;
         int opB2;
 
-        printf ("\n 1) Semestre\n 2) Carrera\n Escoja una opcion: ");
+        printf ("\n 1 Semestre\n 2 Carrera\n Escoja una opcion: ");
         scanf ("%d", &opB);
 
         switch (opB){
         case 1:
-            printf ("\n1) Materia\n2) Parcial\n Escoja: ");
+            printf ("\n1 Materia\n2 Parcial\n Escoja: ");
             scanf ("%d", &opB1);
                 switch (opB1){
                 case 1:
-                    printf ("\n1) Matricula de aprobados\n2) Nombre de materia de alumnos que aprobaron cierta materia\n Escoja: ");
+                    printf ("\n1 Matricula de aprobados\n2 Nombre de materia de alumnos que aprobaron cierta materia\n Escoja: ");
                     scanf ("%d", &opB11);
                     switch (opB11){
                     case 1:
@@ -209,9 +225,9 @@
             break;
 
         case 2:
-        printf ("\n1) Mostrar matricula de alumnos no reprobados");
-        printf ("\n2) Mostrar matricula de alumnos con 1 a 3 adeudos");
-        printf ("\n3) Mostrar alumnos de 4 en adelante adeudos");
+        printf ("\n1 Mostrar matricula de alumnos no reprobados");
+        printf ("\n2 Mostrar matricula de alumnos con 1 a 3 adeudos");
+        printf ("\n3 Mostrar alumnos de 4 en adelante adeudos");
         printf ("\n Escoja: ");
         scanf ("%d", &opB2);
 
@@ -240,3 +256,5 @@
             break;
         }
     }
+
+#endif
